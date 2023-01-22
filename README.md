@@ -14,5 +14,5 @@ The keylogger will run in the background and record all keystrokes made on the c
 
 ## Note
 
-The developer of this software is not responsible for any illegal or unethical use of the software.
+Im not responsible for any illegal or unethical use of the software.
 Feel free to contribuite
